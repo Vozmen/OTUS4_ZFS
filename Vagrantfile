@@ -1,7 +1,7 @@
 # -*- mode: ruby -*-
 # vim: set ft=ruby :
 disk_controller = 'IDE' # MacOS. This setting is OS dependent. Details
-https://github.com/hashicorp/vagrant/issues/8105
+
 MACHINES = {
 :zfs => {
 :box_name => "centos/7",
