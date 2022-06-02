@@ -82,21 +82,15 @@ Vagrant.configure("2") do |config|
 			end
 		end
 		box.vm.provision "shell", inline: <<-SHELL
-		#install zfs repo
-		yum install -y http://download.zfsonlinux.org/epel/zfs-release.el7_8.noarch.rpm
-		#import gpg key
-		rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-zfsonlinux
-		#install DKMS style packages for correct work ZFS
-		yum install -y epel-release kernel-devel zfs
-		#change ZFS repo
-		yum-config-manager --disable zfs
-		yum-config-manager --enable zfs-kmod
-		yum install -y zfs
-		#Add kernel module zfs
-		modprobe zfs
-		#install wget
-		yum install -y wget
-	SHELL
+			yum install -y http://download.zfsonlinux.org/epel/zfs-release.el7_8.noarch.rpm
+			rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-zfsonlinux
+			yum install -y epel-release kernel-devel zfs
+			yum-config-manager --disable zfs
+			yum-config-manager --enable zfs-kmod
+			yum install -y zfs
+			modprobe zfs
+			yum install -y wget
+		SHELL
 	end
 	end
 end
